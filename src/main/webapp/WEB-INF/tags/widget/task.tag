@@ -6,6 +6,8 @@
 <div>
     <p><fmt:formatDate value="${task.date}" pattern="dd MMM yyyy"/></p>
     <span class="lead">${fn:escapeXml(task.title)}</span>
-    <code>${fn:escapeXml(task.tags)}</code>
+    <c:forEach var="tag" items="${task.tagArray}">
+        <code>${fn:escapeXml(tag)}</code>
+    </c:forEach>
     <p>${fn:escapeXml(task.text)}</p>
 </div>
