@@ -1,5 +1,7 @@
 package fr.todooz.domain;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.Date;
 
 public class Task {
@@ -51,5 +53,9 @@ public class Task {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String[] getTagArray() {
+        return StringUtils.split(tags, ",");
     }
 }
