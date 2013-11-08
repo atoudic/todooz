@@ -4,35 +4,24 @@ import fr.todooz.domain.Task;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.inject.Inject;
 import java.util.Date;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration
 public class TaskServiceTest {
+    @Inject
     private SessionFactory sessionFactory;
 
-    @Before
-    public void createSessionFactory() {
-        Configuration configuration = new Configuration();
-
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.DerbyTenFiveDialect");
-        configuration.setProperty("hibernate.connection.url", "jdbc:derby:target/testdb;create=true");
-        configuration.setProperty("hibernate.connection.driver_class", "org.apache.derby.jdbc.EmbeddedDriver");
-        configuration.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-
-        configuration.addAnnotatedClass(Task.class);
-
-        ServiceRegistry serviceRegistry = new ServiceRegistryBuilder()
-                .applySettings(configuration.getProperties()).buildServiceRegistry();
-
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-    }
+    @Inject
+    private TaskService taskService;
 
     @After
     public void cleanDb() {
@@ -45,15 +34,10 @@ public class TaskServiceTest {
         transaction.commit();
 
         session.close();
-
-        sessionFactory.close();
     }
 
     @Test
     public void save() {
-        TaskService taskService = new TaskService();
-        taskService.setSessionFactory(sessionFactory);
-
         taskService.save(task());
     }
 
@@ -68,9 +52,6 @@ public class TaskServiceTest {
 
     @Test
     public void delete() {
-        TaskService taskService = new TaskService();
-        taskService.setSessionFactory(sessionFactory);
-
         Task task = task();
 
         taskService.save(task);
@@ -87,9 +68,6 @@ public class TaskServiceTest {
 
     @Test
     public void findAll() {
-        TaskService taskService = new TaskService();
-        taskService.setSessionFactory(sessionFactory);
-
         taskService.save(task());
         taskService.save(task());
 
@@ -98,9 +76,6 @@ public class TaskServiceTest {
 
     @Test
     public void findByQuery() {
-        TaskService taskService = new TaskService();
-        taskService.setSessionFactory(sessionFactory);
-
         taskService.save(task());
         taskService.save(task());
 
@@ -111,9 +86,6 @@ public class TaskServiceTest {
 
     @Test
     public void count() {
-        TaskService taskService = new TaskService();
-        taskService.setSessionFactory(sessionFactory);
-
         taskService.save(task());
         taskService.save(task());
 

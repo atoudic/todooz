@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Fri Nov 08 10:36:37 CET 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-3712-0573-000004e572b0 
-on database directory /Users/atoudic/IdeaProjects/todooz/target/testdb with class loader sun.misc.Launcher$AppClassLoader@535ff48b 
+Fri Nov 08 12:16:34 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-376d-8984-0000041d88a0 
+on database directory /Users/atoudic/IdeaProjects/todooz/target/testdb with class loader sun.misc.Launcher$AppClassLoader@40affc70 
 Loaded from file:/Users/atoudic/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
 java.vendor=Apple Inc.
 java.runtime.version=1.6.0_33-b03-424-11M3720
