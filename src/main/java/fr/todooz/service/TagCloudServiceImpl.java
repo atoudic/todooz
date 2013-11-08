@@ -6,11 +6,13 @@ import fr.todooz.util.TagCloud;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
 
+@Service
 public class TagCloudServiceImpl implements TagCloudService {
     @Inject
     private SessionFactory sessionFactory;
@@ -29,5 +31,11 @@ public class TagCloudServiceImpl implements TagCloudService {
         }
 
         return tagCloud;
+    }
+
+    private List<String> findTags() {
+        Session session = sessionFactory.getCurrentSession();
+
+        return session.createQuery("select tags from Task").list();
     }
 }

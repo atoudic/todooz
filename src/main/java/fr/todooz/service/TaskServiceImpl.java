@@ -4,12 +4,13 @@ import fr.todooz.domain.Task;
 import org.hibernate.*;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
 import java.util.List;
 
-
+@Service
 public class TaskServiceImpl implements TaskService {
     @Inject
     private SessionFactory sessionFactory;
