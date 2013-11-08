@@ -5,9 +5,9 @@
         <a class="navbar-brand" href="/">Todooz</a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <form class="navbar-form navbar-left" role="search">
+        <form action="/search" class="navbar-form navbar-left" role="search">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" name="query" class="form-control" placeholder="Search">
             </div>
         </form>
         <a href="/add" class="btn btn-default navbar-btn navbar-right">

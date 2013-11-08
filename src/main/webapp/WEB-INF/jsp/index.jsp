@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags/widget" prefix="widget" %>
 <!DOCTYPE html>
 <html>
@@ -9,7 +10,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
 
     <style type="text/css">
         body {
@@ -42,19 +43,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Tags</div>
                 <div class="panel-body">
-                    <a href="/tag/java" style="font-size:14px">java</a>
-                    <a href="/tag/java" style="font-size:20px">java</a>
-                    <a href="/tag/java" style="font-size:16px">java</a>
-                    <a href="/tag/java" style="font-size:12px">java</a>
-                    <a href="/tag/java" style="font-size:10px">java</a>
-                    <a href="/tag/java" style="font-size:22px">java</a>
-                    <a href="/tag/java" style="font-size:12px">java</a>
-                    <a href="/tag/java" style="font-size:14px">java</a>
-                    <a href="/tag/java" style="font-size:18px">java</a>
-                    <a href="/tag/java" style="font-size:24px">java</a>
-                    <a href="/tag/java" style="font-size:12px">java</a>
-                    <a href="/tag/java" style="font-size:10px">java</a>
-                    <a href="/tag/java" style="font-size:14px">java</a>
+                    <c:forEach var="tag" items="${tagCloud.tags}">
+                        <a href="/tag/${tag}" style="font-size:14px">${fn:escapeXml(tag)}</a>
+                    </c:forEach>
                 </div>
             </div>
         </div>

@@ -20,8 +20,7 @@ public class TaskServiceImpl implements TaskService {
     public void save(Task task) {
         Session session = sessionFactory.getCurrentSession();
 
-        session.save(task);
-
+              session.saveOrUpdate(task);
     }
 
     @Override
@@ -45,8 +44,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Task> findByQuery(String query) {
+     @Transactional(readOnly = true)
+     public List<Task> findByQuery(String query) {
         Session session = sessionFactory.getCurrentSession();
 
         Criteria criteria = session.createCriteria(Task.class);
@@ -56,6 +55,29 @@ public class TaskServiceImpl implements TaskService {
         List<Task> tasks = criteria.list();
 
         return tasks;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Task> findByTag(String tag) {
+        Session session = sessionFactory.getCurrentSession();
+
+        Criteria criteria = session.createCriteria(Task.class);
+
+        criteria.add(Restrictions.ilike("tags", tag, MatchMode.ANYWHERE));
+
+        List<Task> tasks = criteria.list();
+
+        return tasks;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Task findById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+
+        return (Task) session.get(Task.class, id);
+
     }
 
     @Override

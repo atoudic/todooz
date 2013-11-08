@@ -23,7 +23,7 @@ public class Task {
     private String text;
 
     @Column
-    private Date date;
+    private Date date = new Date();
 
     @Column(nullable = true)
     private String tags;

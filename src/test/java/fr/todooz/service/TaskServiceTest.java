@@ -85,10 +85,29 @@ public class TaskServiceTest {
     }
 
     @Test
+    public void findByTag() {
+        taskService.save(task());
+        taskService.save(task());
+
+        Assert.assertEquals(2, taskService.findByTag("java").size());
+        Assert.assertEquals(0, taskService.findByTag("driven").size());
+    }
+
+    @Test
     public void count() {
         taskService.save(task());
         taskService.save(task());
 
         Assert.assertEquals(2, taskService.count());
+    }
+
+    @Test
+    public void update() {
+        Task task = task();
+
+        taskService.save(task);
+        taskService.save(task);
+
+        Assert.assertEquals(1, taskService.count());
     }
 }

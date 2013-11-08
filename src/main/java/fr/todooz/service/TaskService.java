@@ -13,5 +13,9 @@ public interface TaskService {
 
     List<Task> findByQuery(String query);
 
+    List<Task> findByTag(String tag);
+
     int count();
+
+    Task findById(Long id);
 }
