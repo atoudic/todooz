@@ -28,6 +28,10 @@
             <c:forEach var="task" items="${tasks}">
                 <widget:task task="${task}"/>
             </c:forEach>
+
+            <c:if test="${not empty flashMessage}">
+                <div class="alert alert-success">${flashMessage}</div>
+            </c:if>
         </div>
         <div class="col-lg-3">
             <div class="panel panel-default">

@@ -1,9 +1,12 @@
 package fr.todooz.domain;
 
 import org.apache.commons.lang.StringUtils;
+import org.hibernate.validator.constraints.NotBlank;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -17,12 +20,16 @@ public class Task {
     private Date createdAt = new Date();
 
     @Column
+    @NotBlank
+    @Size(min = 1, max = 255)
     private String title;
 
     @Column(length = 4000, nullable = true)
+    @Size(max = 4000)
     private String text;
 
     @Column
+    @NotNull
     private Date date = new Date();
 
     @Column(nullable = true)

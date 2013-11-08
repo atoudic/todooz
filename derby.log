@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Fri Nov 08 17:23:18 CET 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-3886-58bc-00000291f0a0 
+Fri Nov 08 17:33:14 CET 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0142-388f-7392-000002e2c450 
 on database directory /Users/atoudic/IdeaProjects/todooz/target/taskdb with class loader WebappClassLoader
   context: 
   delegate: false

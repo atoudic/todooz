@@ -11,9 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.DataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.inject.Inject;
 import javax.persistence.Column;
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -46,11 +48,14 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public String post(@ModelAttribute Task task, BindingResult result) {
+    public String post(@ModelAttribute @Valid Task task, BindingResult result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "edit";
         }
+
         taskService.save(task);
+
+        redirectAttributes.addFlashAttribute("flashMessage", "La sauvegarde a réussi");
 
         return "redirect:/";
     }
