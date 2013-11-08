@@ -26,4 +26,13 @@ public class TagCloud {
         return tags.contains(tag);
     }
 
+    public void top(int i) {
+        if (i<0) tags = tags.subList(0, 0);
+        else if (i < size())        tags = tags.subList(0,i);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(tags);
+
+    }
 }
